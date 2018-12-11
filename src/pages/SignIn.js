@@ -13,27 +13,6 @@ import InputLabel from '@material-ui/core/InputLabel';
 
 import Grid from '@material-ui/core/Grid';
 
-const card = {
-
-    minWidth: 275,
-    margin: 'auto',
-position: 'absolute',
-    width:200
-
-};
-
-const bullet= {
-        display: 'inline-block',
-        margin: '0 2px',
-        transform: 'scale(0.8)'
-    };
-
-   const title= {
-        fontSize: 14
-    };
-  const  pos= {
-        marginBottom: 12
-    };
 
 
 
@@ -50,7 +29,7 @@ class SignIn extends React.Component {
             >
 
                 <Grid item xs={3}>
-                    <Card>
+                    <Card >
                     <CardContent>
                     <form >
                         <FormControl margin="normal" required fullWidth>

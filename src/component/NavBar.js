@@ -14,5 +14,5 @@ const NavBar = () => {
             </AppBar>
         </div>
     )
-}
+};
 export default NavBar;
