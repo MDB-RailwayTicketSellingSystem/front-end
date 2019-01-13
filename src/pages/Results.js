@@ -158,7 +158,7 @@ class Results extends React.Component {
         arrivestation:'',
         leavetimeresult:'',
         arrivetimeresult:'',
-        duration:'',
+        
         remainingseat:'',
         price:'',
 
@@ -182,7 +182,7 @@ class Results extends React.Component {
         this.setState({ arrivestation: row.arrivestation });
         this.setState({ leavetimeresult: row.leavetimeresult });
         this.setState({ arrivetimeresult: row.arrivetimeresult });
-        this.setState({ duration: row.duration });
+
         this.setState({ remainingseat: row.remainingseat });
         this.setState({ price: row.price });
         this.setState({ open: true });
@@ -305,7 +305,7 @@ class Results extends React.Component {
                                 <TableCell align="right">到达地</TableCell>
                                 <TableCell align="right">出发时间</TableCell>
                                 <TableCell align="right">到达时间</TableCell>
-                                <TableCell align="right">历时</TableCell>
+
                                 <TableCell align="right">剩余座位</TableCell>
                                 <TableCell align="right">价格</TableCell>
                                 <TableCell name="book" align="right">订票</TableCell>
@@ -323,7 +323,7 @@ class Results extends React.Component {
                                         <TableCell align="right">{row.arrivestation}</TableCell>
                                         <TableCell align="right">{row.leavetimeresult}</TableCell>
                                         <TableCell align="right">{row.arrivetimeresult}</TableCell>
-                                        <TableCell align="right">{row.duration}</TableCell>
+
                                         <TableCell align="right">{row.remainingseat}</TableCell>
                                         <TableCell align="right">{row.price}</TableCell>
                                         <TableCell align="right">
