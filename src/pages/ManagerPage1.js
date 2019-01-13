@@ -165,10 +165,10 @@ class ManagerPage1 extends React.Component {
         var year = date.getFullYear().toString();
         var month =(date.getMonth() + 1).toString();
         var day = (date.getDate()).toString();
-        if (month.length == 1) {
+        if (month.length === 1) {
             month = "0" + month;
         }
-        if (day.length == 1) {
+        if (day.length === 1) {
             day = "0" + day;
         }
         var dateTime = year + "-" + month + "-" + day;
@@ -245,7 +245,6 @@ class ManagerPage1 extends React.Component {
                                                     className: classes.menu,
                                                 },
                                             }}
-
                                             margin="normal"
                                         >
                                             {currencies.map(option => (
@@ -262,7 +261,8 @@ class ManagerPage1 extends React.Component {
                                             onClick={this.handleCommit}
                                         >
                                             查询
-                                        </Button>
+                                        </Button
+>
                                     </form>
                                 </CardContent>
                             </Card>

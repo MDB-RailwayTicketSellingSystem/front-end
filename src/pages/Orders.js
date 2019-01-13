@@ -33,6 +33,7 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import moment from 'moment';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
+
 const actionsStyles = theme => ({
     root: {
         flexShrink: 0,
@@ -52,10 +53,6 @@ function TabContainer(props) {
 TabContainer.propTypes = {
     children: PropTypes.node.isRequired,
 };
-
-function LinkTab(props) {
-    return <Tab component="a" onClick={event => event.preventDefault()} {...props} />;
-}
 
 class OrdersTable extends Component {
 

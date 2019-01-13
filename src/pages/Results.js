@@ -229,7 +229,7 @@ class Results extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-        let trains=new Array();
+        let trains=[];
         let i=0;
         //查询列车接口
         axios.get('http://localhost:8080/time/findTrain'
