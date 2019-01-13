@@ -106,8 +106,18 @@ class SignIn extends React.Component {
                                         fullWidth
                                         variant="contained"
                                         color="primary">
-                                            Sign in
+                                            用户登录
                                     </Button>
+                                    </Link>
+                                    <Link to={'/ManagerPage1'}>
+                                        <Button
+                                            style={{marginTop:10}}
+                                            type="submit"
+                                            fullWidth
+                                            variant="contained"
+                                            color="inherit">
+                                            管理员模式
+                                        </Button>
                                     </Link>
                                 </form>
                             </CardContent>
