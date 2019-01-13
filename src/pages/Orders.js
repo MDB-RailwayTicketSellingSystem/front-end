@@ -33,6 +33,10 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import moment from 'moment';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
+import echarts from 'echarts/lib/echarts';
+import  'echarts/lib/chart/bar';
+import 'echarts/lib/component/tooltip';
+import 'echarts/lib/component/title';
 
 const actionsStyles = theme => ({
     root: {
@@ -285,6 +289,8 @@ class Orders extends React.Component {
         let orders=[];
         let i=0;
         this.setState({rows:[]});
+        var myChart = echarts.init(document.getElementById('charts'));
+
         axios.post('http://localhost:8080/trainorder/findHistoryOrder'
             +"?accountid="+this.props.match.params.accountID
             +"&start="+moment(this.state.startDate).format('YYYY-MM-DD')
@@ -301,6 +307,21 @@ class Orders extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
+
+        myChart.setOption({
+            title: { text: 'Oracle与TimesTen查询历史订单速度对比（单位：s）' },
+            tooltip: {},
+            xAxis: {
+
+            },
+            yAxis: { data: ["Oracle", "TimesTen"]},
+            series: [{
+                name: '查询速度',
+                type: 'bar',
+                data: [0.05, 0.2]
+            }]
+        });
+
     };
 
 
@@ -320,7 +341,7 @@ class Orders extends React.Component {
         const accountID = this.props.match.params.accountID;
 
         return (
-            <div style={{background: `url(${Background})` ,width:"100%",height:1700,position:"absolute"}}>
+            <div    style={{background: `url(${Background})` ,width:"100%",height:1700,position:"absolute"}}>
 
                 <div >
                     <Paper style={{marginLeft:50,marginRight:50,marginTop:10,marginBottom:10}}>
@@ -504,7 +525,10 @@ class Orders extends React.Component {
                         </IconButton>,
                     ]}
                 />
-            </div>
+                <Paper style={{marginLeft:50,marginRight:50,marginTop:10}}>
+                <div id="charts" style={{ width: 800, height: 200 }}></div>
+                </Paper>
+                </div>
         );
     }
 }

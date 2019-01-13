@@ -28,6 +28,10 @@ import Background from '../img/wallhaven-210908.jpg';
 import axios from 'axios';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
+import echarts from 'echarts/lib/echarts';
+import  'echarts/lib/chart/bar';
+import 'echarts/lib/component/tooltip';
+import 'echarts/lib/component/title';
 
 const actionsStyles = theme => ({
     root: {
@@ -158,7 +162,7 @@ class Results extends React.Component {
         arrivestation:'',
         leavetimeresult:'',
         arrivetimeresult:'',
-        
+
         remainingseat:'',
         price:'',
 
@@ -231,6 +235,7 @@ class Results extends React.Component {
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
         let trains=[];
         let i=0;
+
         //查询列车接口
         axios.get('http://localhost:8080/time/findTrain'
             +"?start="+this.props.match.params.start
@@ -248,9 +253,25 @@ class Results extends React.Component {
             .catch(function (error) {
                 console.log(error);
             });
+
     };
 
+    componentDidMount(){
+        var myChart = echarts.init(document.getElementById('charts'));
+        myChart.setOption({
+            title: { text: 'Oracle与TimesTen查询列车速度对比（单位：s）' },
+            tooltip: {},
+            xAxis: {
 
+            },
+            yAxis: { data: ["Oracle", "TimesTen"]},
+            series: [{
+                name: '查询速度',
+                type: 'bar',
+                data: [0.05, 0.2]
+            }]
+        });
+    }
     render() {
         const { classes } = this.props;
         const { rows, rowsPerPage, page } = this.state;
@@ -508,6 +529,9 @@ class Results extends React.Component {
                         </IconButton>,
                     ]}
                 />
+                <Paper style={{marginLeft:50,marginRight:50,marginTop:10}}>
+                    <div id="charts" style={{ width: 800, height: 200 }}></div>
+                </Paper>
             </div>
         );
     }

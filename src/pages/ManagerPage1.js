@@ -254,7 +254,6 @@ class ManagerPage1 extends React.Component {
                                             ))}
                                         </TextField>
                                         <Button
-
                                             fullWidth
                                             variant="contained"
                                             color="primary"
