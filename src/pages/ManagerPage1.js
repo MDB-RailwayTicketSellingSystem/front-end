@@ -14,15 +14,17 @@ import ReactEcharts from 'echarts-for-react';
 import axios from 'axios';
 import Grid from '@material-ui/core/Grid';
 import ManagerDrawer from '../component/ManagerDrawer'
+import moment from 'moment';
+
 const drawerWidth = 240;
 const currencies = [
     {
         value: '0',
-        label: '已完成',
+        label: '未完成',
     },
     {
         value: '1',
-        label: '未支付',
+        label: '已完成',
     },
     {
         value: '2',
@@ -101,6 +103,12 @@ class ManagerPage1 extends React.Component {
             endDate: date
         });
     };
+
+    handleChangeStatus = name => event => {
+        this.setState({
+            [name]: event.target.value,
+        });
+    };
     handleCommit=() =>{
         var start=this.state.startDate;
         var end=this.state.endDate;
@@ -108,17 +116,18 @@ class ManagerPage1 extends React.Component {
 
         var url='http://localhost:8080/admin/addCount?';
         url+='start=';
-        url+=this.dateToString(start);
+        url+=moment(this.state.startDate).format('YYYY-MM-DD');
         url+='&end=';
-        url+=this.dateToString(end);
+        url+=moment(this.state.endDate).format('YYYY-MM-DD');
         url+='&status=';
-        url+='1';
+        url+=this.state.status;
         console.log(url);
         var myChart = echarts.init(document.getElementById('charts'));
 
         axios.get(url,{})
             .then((response) =>{
                 console.log(JSON.stringify(response.data));
+                console.log(response.data);
                 var list=response.data.data;
                 console.log(list);
                 var date=[];
@@ -137,7 +146,7 @@ class ManagerPage1 extends React.Component {
                     },
                     tooltip: {},
                     legend: {
-                        data:['销量']
+                        data:['订单总量']
                     },
                     xAxis: {
                         data: date
@@ -237,10 +246,9 @@ class ManagerPage1 extends React.Component {
                                             select
                                             label="订单状态"
                                             className={classes.textField}
-                                            value={this.state.currency}
-                                            onChange={this.handleChange}
+                                            value={this.state.status}
+                                            onChange={this.handleChangeStatus('status')}
                                             SelectProps={{
-                                                native: true,
                                                 MenuProps: {
                                                     className: classes.menu,
                                                 },

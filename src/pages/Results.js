@@ -259,7 +259,7 @@ class Results extends React.Component {
     componentDidMount(){
         var myChart = echarts.init(document.getElementById('charts'));
         myChart.setOption({
-            title: { text: 'Oracle与TimesTen查询列车速度对比（单位：s）' },
+            title: { text: 'Oracle与TimesTen 查询列车 速度对比（单位：s）' },
             tooltip: {},
             xAxis: {
 
