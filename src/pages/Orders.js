@@ -309,16 +309,16 @@ class Orders extends React.Component {
             });
 
         myChart.setOption({
-            title: { text: 'Oracle与TimesTen查询历史订单速度对比（单位：s）' },
+            title: { text: 'Oracle与TimesTen查询历史订单 时间对比（单位：s）' },
             tooltip: {},
             xAxis: {
 
             },
             yAxis: { data: ["Oracle", "TimesTen"]},
             series: [{
-                name: '查询速度',
+                name: '查询时间',
                 type: 'bar',
-                data: [0.05, 0.2]
+                data: [0.05, 0.02]
             }]
         });
 
