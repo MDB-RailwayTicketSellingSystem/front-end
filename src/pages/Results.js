@@ -268,7 +268,7 @@ class Results extends React.Component {
             series: [{
                 name: '查询时间',
                 type: 'bar',
-                data: [0.05, 0.02]
+                data: [0.078, 0.112]
             }]
         });
     }
